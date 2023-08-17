@@ -38,7 +38,7 @@ export function handleApplicationErrors(
     });
   }
 
-  if (err.name === 'ForbiddenError') {
+  if (err.name === 'ForbiddenError' || err.name === 'CannotHaveBookingError') {
     return res.status(httpStatus.FORBIDDEN).send({
       message: err.message,
     });

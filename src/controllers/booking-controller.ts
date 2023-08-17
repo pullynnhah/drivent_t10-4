@@ -4,14 +4,14 @@ import bookingsService from '@/services/bookings-service';
 
 export async function getBooking(req: AuthenticatedRequest, res: Response) {
   const { userId } = req;
-  const booking = bookingsService.getBooking(userId);
+  const booking = await bookingsService.getBooking(userId);
   res.send(booking);
 }
 
 export async function saveBooking(req: AuthenticatedRequest, res: Response) {
   const { userId } = req;
   const roomId = Number(req.body.roomId);
-  const bookingId = bookingsService.saveBooking(userId, roomId);
+  const bookingId = await bookingsService.saveBooking(userId, roomId);
   res.send({ bookingId });
 }
 
